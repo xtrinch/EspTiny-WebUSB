@@ -92,10 +92,10 @@ public:
     friend void tud_resume_cb(void);
     static uint8_t *descriptor_config;
     static uint8_t *descriptor_config_if;
+    static USBCallbacks* m_callbacks;
 
 protected:
     uint8_t _itf;
-    static USBCallbacks* m_callbacks;
 
     xTaskHandle usbTaskHandle;
 
