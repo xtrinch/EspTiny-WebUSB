@@ -280,7 +280,7 @@ static void IRAM_ATTR usb_persist_shutdown_handler(void)
 //--------------------------------------------------------------------+
 
 // Invoked when device is mounted
-void __wrap_tud_mount_cb(void)
+void tud_mount_cb(void)
 {
     if (EspTinyUSB::m_callbacks)
     {
@@ -289,7 +289,7 @@ void __wrap_tud_mount_cb(void)
 }
 
 // Invoked when device is unmounted
-void __wrap_tud_umount_cb(void)
+void tud_umount_cb(void)
 {
     if (EspTinyUSB::m_callbacks)
     {
@@ -300,7 +300,7 @@ void __wrap_tud_umount_cb(void)
 // Invoked when usb bus is suspended
 // remote_wakeup_en : if host allow us  to perform remote wakeup
 // Within 7ms, device must draw an average of current less than 2.5 mA from bus
-void __wrap_tud_suspend_cb(bool remote_wakeup_en)
+void tud_suspend_cb(bool remote_wakeup_en)
 {
     if (EspTinyUSB::m_callbacks)
     {
@@ -309,7 +309,7 @@ void __wrap_tud_suspend_cb(bool remote_wakeup_en)
 }
 
 // Invoked when usb bus is resumed
-void __wrap_tud_resume_cb(void)
+void tud_resume_cb(void)
 {
     if (EspTinyUSB::m_callbacks)
     {
