@@ -1,5 +1,7 @@
 # Description
 
+This repo is nothing but a stripped down version of https://github.com/chegewara/EspTinyUSB that I use for my own purposes. Please check out their library instead, it probably statisfies all your needs.
+
 Library allows to build USB class devices and to make it usable with minimal effort:
 - CDC, communication device class,
 - MSC, mass storage class,
