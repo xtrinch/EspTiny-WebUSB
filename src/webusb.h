@@ -2,8 +2,8 @@
 
 #pragma once
 #define MS_OS_20_DESC_LEN 0xB2
-#define EPNUM_VENDOR_IN  4
-#define EPNUM_VENDOR_OUT 5
+#define EPNUM_VENDOR_IN  3
+#define EPNUM_VENDOR_OUT 3
 #define _vendor  "Vendor class (webUSB)"
 
 // https://developers.google.com/web/fundamentals/native-hardware/build-for-webusb#microsoft_os_compatibility_descriptors

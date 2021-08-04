@@ -27,7 +27,7 @@ bool WebUSB::begin(char* str, const char *url, bool ssl)
         landingPageURI(url, ssl);
 
     // Interface number, string index, EP Out & IN address, EP size
-    uint8_t vendor[] = {TUD_VENDOR_DESCRIPTOR(ifIdx++, 7, _EPNUM_VENDOR_OUT, (uint8_t)(0x80 | _EPNUM_VENDOR_IN), 64)};
+    uint8_t vendor[] = {TUD_VENDOR_DESCRIPTOR(ifIdx++, 7, _EPNUM_VENDOR_IN, (uint8_t)(0x80 | _EPNUM_VENDOR_IN), 64)};
     memcpy(&desc_configuration[total], vendor, sizeof(vendor));
     total += sizeof(vendor);
     count++;

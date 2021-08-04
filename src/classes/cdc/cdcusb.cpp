@@ -5,7 +5,7 @@
 #if CFG_TUD_CDC
 
 #define EPNUM_CDC_IN   2
-#define EPNUM_CDC_OUT   3
+#define EPNUM_CDC_OUT   2
 
 static CDCusb* _CDCusb[2] = {};
 enum { CDC_LINE_IDLE, CDC_LINE_1, CDC_LINE_2, CDC_LINE_3 };
@@ -27,7 +27,7 @@ void CDCusb::setBaseEP(uint8_t ep)
 bool CDCusb::begin(char* str)
 {
     // Interface number, string index, EP notification address and size, EP data address (out, in) and size.
-    uint8_t cdc[TUD_CDC_DESC_LEN] = {TUD_CDC_DESCRIPTOR(ifIdx, 4, 0x81, 8, _EPNUM_CDC_OUT, 0x80 | EPNUM_CDC_IN, 64)};
+    uint8_t cdc[TUD_CDC_DESC_LEN] = {TUD_CDC_DESCRIPTOR(ifIdx, 4, (uint8_t)(0x80 | (_EPNUM_CDC_IN - 1)), 8, (uint8_t)_EPNUM_CDC_IN, (uint8_t)(0x80 | _EPNUM_CDC_IN), 64)};
     memcpy(&desc_configuration[total], cdc, sizeof(cdc));
     total += sizeof(cdc);
     ifIdx += 2;
@@ -204,7 +204,7 @@ void tud_cdc_line_state_cb(uint8_t itf, bool dtr, bool rts)
             if (reset)
             {
                 _CDCusb[itf]->persistentReset(RESTART_BOOTLOADER);
-                // esp_restart();
+                esp_restart();
             }
         } else {
             lineState = CDC_LINE_IDLE;
